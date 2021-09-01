@@ -1,0 +1,63 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+int *aloca(int n){
+    return (int*)malloc(n*sizeof(int));
+}
+
+//---------------------------------------------------------
+void imprime(int *p,int n){
+    int i;
+
+    for(i=0;i<n;i++)
+        printf("%d ",p[i]);
+}
+
+//---------------------------------------------------------
+void libera(int *p){
+    free(p);
+}
+
+//---------------------------------------------------------
+void funcaoPrincipal(){
+    int n,i,*p;
+
+    printf("\nForneça o tamanho do vetor: ");
+    scanf("%d",&n);
+
+    p=aloca(n);
+
+    if(!p){//o mesmo que if(p==NULL);
+        printf("\nERRO na alocação de memória!!!");
+        exit(1);
+    }
+
+    for(i=0;i<n;i++){
+        printf("\nForneça o valor do vetor na posição[%d]: ",i);
+        scanf("%d",p+i);
+    }
+
+    imprime(p,n);
+
+    libera(p);
+}
+
+///main!---------------------------------------------------
+int main(){
+
+    funcaoPrincipal();
+    /*int n,*v1,*v2,*v3;
+
+    printf("\nForneça o tamanho do vetor: ");
+    scanf("%d",&n);
+
+    v1=aloca(n);
+    v2=aloca(n);
+    v3=aloca(n);
+
+    printf("\nEndereço de memória retornado pela função aloca (v1): %x",v1);
+    printf("\nEndereço de memória retornado pela função aloca (v2): %x",v2);
+    printf("\nEndereço de memória retornado pela função aloca (v3): %x",v3);*/
+
+    return 0;
+}
