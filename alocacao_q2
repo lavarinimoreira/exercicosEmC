@@ -25,6 +25,11 @@ int main(){
     if(n>0){
         aloca(&v,n);
 
+        if(!v){//o mesmo que if(p==NULL);
+        printf("\nERRO na alocação de memória!!!");
+        exit(1);
+        }
+
         for(i=0;i<n;i++){
             printf("%.0f ",v[i]);
         }
